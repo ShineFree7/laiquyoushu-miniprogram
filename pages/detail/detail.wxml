@@ -1,0 +1,165 @@
+<view class="page {{themeClass}}">
+  <view class="range-bar">
+    <view class="range-nav" bindtap="shiftRange" data-dir="-1">‹</view>
+    <view class="range-title" bindtap="openPicker">{{title}}</view>
+    <view class="range-nav" bindtap="shiftRange" data-dir="1">›</view>
+  </view>
+
+  <view class="summary-strip">
+    <view class="summary-item">
+      <text class="summary-label">支出</text>
+      <text class="summary-value expense">¥{{summary.expenseText}}</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-label">收入</text>
+      <text class="summary-value income">¥{{summary.incomeText}}</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-label">结余</text>
+      <text class="summary-value">¥{{summary.balanceText}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{groups.length === 0}}" class="empty">
+    <view class="empty-title">这段时间还没有记录</view>
+    <view class="empty-sub">去首页记一笔吧</view>
+  </view>
+
+  <view wx:for="{{groups}}" wx:key="date" class="group">
+    <view class="group-head">
+      <text class="group-date">{{item.label}}</text>
+      <text class="group-expense">支出 ¥{{item.expenseText}} · 收入 ¥{{item.incomeText}}</text>
+    </view>
+    <view class="card group-card">
+      <view wx:for="{{item.records}}" wx:for-item="r" wx:key="id" class="record" bindlongpress="onRecordLongPress" data-id="{{r.id}}">
+        <view class="record-icon">
+          <image wx:if="{{r.iconType === 'image'}}" class="record-icon-img" src="{{r.icon}}" mode="aspectFit"></image>
+          <text wx:else>{{r.icon}}</text>
+        </view>
+        <view class="record-main">
+          <view class="record-category">{{r.category}}</view>
+          <view class="record-note" wx:if="{{r.note}}">{{r.note}}</view>
+        </view>
+        <view class="record-amount {{r.type === 'income' ? 'income' : 'expense'}}">{{r.type === 'income' ? '+' : '-'}}¥{{r.amountText}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mask" wx:if="{{edit.show}}" bindtap="closeEdit" catchtouchmove="noop">
+    <view class="sheet" catchtap="noop">
+      <view class="sheet-title">修改记录</view>
+      <scroll-view scroll-y class="sheet-body">
+        <view class="mode-tabs">
+          <view class="mode-tab {{edit.type === 'expense' ? 'active' : ''}}" data-type="expense" bindtap="onEditType">支出</view>
+          <view class="mode-tab {{edit.type === 'income' ? 'active' : ''}}" data-type="income" bindtap="onEditType">收入</view>
+        </view>
+
+        <view class="edit-field">
+          <text class="edit-label">分类</text>
+          <view class="edit-cat-grid">
+            <view wx:for="{{edit.categories}}" wx:key="name" class="edit-cat-tile {{edit.categoryIndex === index ? 'active' : ''}}" bindtap="onEditCategory" data-index="{{index}}">
+              <view class="edit-cat-inner">
+                <image wx:if="{{item.iconType === 'image'}}" class="edit-cat-icon img" src="{{edit.categoryIndex === index ? item.iconActive : item.icon}}" mode="aspectFit"></image>
+                <text wx:else class="edit-cat-icon">{{item.icon}}</text>
+                <text class="edit-cat-name">{{item.name}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="edit-field">
+          <text class="edit-label">金额</text>
+          <input class="edit-input" type="digit" placeholder="0.00" value="{{edit.amount}}" bindinput="onEditAmount" />
+        </view>
+
+        <view class="edit-field">
+          <text class="edit-label">日期</text>
+          <picker mode="date" value="{{edit.date}}" bindchange="onEditDate">
+            <view class="picker-value">{{edit.date}}</view>
+          </picker>
+        </view>
+
+        <view class="edit-field">
+          <text class="edit-label">备注</text>
+          <input class="edit-input" placeholder="可选" value="{{edit.note}}" bindinput="onEditNote" maxlength="50" />
+        </view>
+      </scroll-view>
+
+      <view class="sheet-actions">
+        <view class="btn btn-cancel" bindtap="closeEdit">取消</view>
+        <view class="btn btn-ok" bindtap="saveEdit">保存</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mask" wx:if="{{picker.show && !picker.customCalOpen}}" bindtap="closePicker" catchtouchmove="noop">
+    <view class="sheet" catchtap="noop">
+      <view class="sheet-title">选择查看区间</view>
+      <view class="mode-tabs">
+        <view class="mode-tab {{picker.mode === 'month' ? 'active' : ''}}" data-mode="month" bindtap="onPickMode">月</view>
+        <view class="mode-tab {{picker.mode === 'week' ? 'active' : ''}}" data-mode="week" bindtap="onPickMode">周</view>
+        <view class="mode-tab {{picker.mode === 'year' ? 'active' : ''}}" data-mode="year" bindtap="onPickMode">年</view>
+        <view class="mode-tab {{picker.mode === 'custom' ? 'active' : ''}}" data-mode="custom" bindtap="onPickMode">自定义</view>
+      </view>
+
+      <scroll-view scroll-y class="sheet-body" wx:if="{{picker.mode !== 'year'}}">
+        <block wx:if="{{picker.mode === 'month' || picker.mode === 'week'}}">
+          <view class="cal-head">
+            <view class="cal-nav" bindtap="calShift" data-dir="-1">‹</view>
+            <view class="cal-title">{{picker.calTitle}}</view>
+            <view class="cal-nav" bindtap="calShift" data-dir="1">›</view>
+          </view>
+          <view class="cal-week">
+            <text wx:for="{{calWeek}}" wx:key="*this" class="cal-week-cell">{{item}}</text>
+          </view>
+          <view class="cal-grid">
+            <view wx:for="{{picker.calCells}}" wx:key="key" class="cal-cell {{item.day ? 'day' : 'blank'}} {{item.state}}" bindtap="onPickDay" data-date="{{item.value}}">{{item.day}}</view>
+          </view>
+        </block>
+
+        <block wx:if="{{picker.mode === 'custom'}}">
+          <view class="picker-row custom-target {{picker.customTarget === 'start' ? 'active' : ''}}" bindtap="onCustomTarget" data-target="start">开始：{{picker.start}} <text class="picker-hint">选择</text></view>
+          <view class="picker-row custom-target {{picker.customTarget === 'end' ? 'active' : ''}}" bindtap="onCustomTarget" data-target="end">结束：{{picker.end}} <text class="picker-hint">选择</text></view>
+        </block>
+      </scroll-view>
+
+      <block wx:if="{{picker.mode === 'year'}}">
+        <view class="year-wheel-wrap">
+          <scroll-view scroll-y enhanced class="year-scroll" scroll-into-view="{{picker.scrollInto}}" scroll-with-animation show-scrollbar="{{false}}" bindscroll="onYearScroll" bindscrollend="onYearScrollEnd">
+            <view class="year-scroll-pad"></view>
+            <view wx:for="{{picker.years}}" wx:key="*this" id="year-{{item}}" class="year-scroll-item {{picker.year === item ? 'active' : ''}}" bindtap="onYearTap" data-year="{{item}}">{{item}}</view>
+            <view class="year-scroll-pad"></view>
+          </scroll-view>
+        </view>
+      </block>
+
+      <view class="sheet-actions">
+        <view class="btn btn-cancel" bindtap="closePicker">取消</view>
+        <view class="btn btn-ok" bindtap="applyPicker">完成</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mask" wx:if="{{picker.show && picker.customCalOpen}}" bindtap="closeCustomCal" catchtouchmove="noop">
+    <view class="sheet" catchtap="noop">
+      <view class="sheet-title">{{picker.customTarget === 'start' ? '选择开始日期' : '选择结束日期'}}</view>
+      <scroll-view scroll-y class="sheet-body">
+        <view class="cal-head">
+          <view class="cal-nav" bindtap="calShift" data-dir="-1">‹</view>
+          <view class="cal-title">{{picker.customTarget === 'start' ? picker.startCal.title : picker.endCal.title}}</view>
+          <view class="cal-nav" bindtap="calShift" data-dir="1">›</view>
+        </view>
+        <view class="cal-week">
+          <text wx:for="{{calWeek}}" wx:key="*this" class="cal-week-cell">{{item}}</text>
+        </view>
+        <view class="cal-grid">
+          <view wx:for="{{picker.customTarget === 'start' ? picker.startCal.cells : picker.endCal.cells}}" wx:key="key" class="cal-cell {{item.day ? 'day' : 'blank'}} {{item.state}}" bindtap="onPickDay" data-date="{{item.value}}">{{item.day}}</view>
+        </view>
+      </scroll-view>
+      <view class="sheet-actions">
+        <view class="btn btn-cancel" bindtap="closeCustomCal">取消</view>
+        <view class="btn btn-ok" bindtap="confirmCustomCal">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

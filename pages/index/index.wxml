@@ -1,0 +1,112 @@
+<view class="page {{themeClass}}">
+  <view class="hero">
+    <view class="hero-date">{{today}}</view>
+    <view class="hero-row">
+      <view class="hero-item">
+        <text class="hero-label">今日支出</text>
+        <text class="hero-amount">¥{{todayExpense}}</text>
+      </view>
+      <view class="hero-divider"></view>
+      <view class="hero-item">
+        <text class="hero-label">今日收入</text>
+        <text class="hero-amount">¥{{todayIncome}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="type-switch">
+      <view class="type-item {{type === 'expense' ? 'active' : ''}}" bindtap="setType" data-type="expense">支出</view>
+      <view class="type-item {{type === 'income' ? 'active' : ''}}" bindtap="setType" data-type="income">收入</view>
+    </view>
+
+    <view class="field">
+      <text class="label">金额</text>
+      <view class="amount-row">
+        <text class="amount-prefix">¥</text>
+        <input class="input amount-input" type="digit" placeholder="0.00" placeholder-class="amount-placeholder" value="{{form.amount}}" bindinput="onAmount" />
+      </view>
+    </view>
+
+    <view class="field cat-field" bindtap="toggleCats">
+      <text class="label">分类</text>
+      <view class="cat-current">
+        <image wx:if="{{selectedIconType === 'image'}}" class="cat-current-icon img" src="{{selectedIcon}}" mode="aspectFit"></image>
+        <text wx:else class="cat-current-icon">{{selectedIcon}}</text>
+        <text class="cat-current-name">{{selectedCategory || '请选择分类'}}</text>
+        <text class="cat-arrow">{{showCats ? '▲' : '▼'}}</text>
+      </view>
+    </view>
+
+    <view class="cat-panel" wx:if="{{showCats}}">
+      <view class="cat-grid">
+        <view wx:for="{{categories}}" wx:key="name" class="cat-tile {{selectedCategory === item.name ? 'active' : ''}}" bindtap="selectCategory" data-name="{{item.name}}" bindlongpress="onCategoryLongPress" data-id="{{item.id}}" data-custom="{{item.custom}}">
+          <view class="cat-del" catchtap="onCategoryDelete" data-name="{{item.name}}" data-id="{{item.id}}" data-custom="{{item.custom}}">×</view>
+          <view class="cat-inner">
+            <image wx:if="{{item.iconType === 'image'}}" class="cat-icon img" src="{{selectedCategory === item.name ? item.iconActive : item.icon}}" mode="aspectFit"></image>
+            <text wx:else class="cat-icon">{{item.icon}}</text>
+            <text class="cat-name">{{item.name}}</text>
+          </view>
+        </view>
+        <view class="cat-tile">
+          <view class="cat-inner add" bindtap="showCustom">
+            <text class="cat-icon add-icon">＋</text>
+            <text class="cat-name">自定义</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="field" bindtap="showDatePicker">
+      <text class="label">日期</text>
+      <view class="picker-value">{{form.date}}</view>
+      <text class="cat-arrow">▾</text>
+    </view>
+
+    <view class="field">
+      <text class="label">备注</text>
+      <input class="input" placeholder="可选" value="{{form.note}}" bindinput="onNote" maxlength="50" />
+    </view>
+
+    <button class="save-btn" bindtap="onSave">记一笔</button>
+  </view>
+
+  <view class="mask" wx:if="{{custom.show}}" bindtap="closeCustom" catchtouchmove="noop">
+    <view class="sheet" catchtap="noop">
+      <view class="sheet-title">新增{{type === 'expense' ? '支出' : '收入'}}分类</view>
+      <scroll-view scroll-y class="sheet-body custom-sheet-body">
+        <input class="custom-name" placeholder="分类名称" value="{{custom.name}}" bindinput="onCustomName" maxlength="6" />
+        <view class="modal-section-title">输入表情符号</view>
+        <input class="custom-name" placeholder="例如 🐱" value="{{custom.textIcon}}" bindinput="onCustomText" maxlength="4" />
+      </scroll-view>
+
+      <view class="sheet-actions">
+        <view class="btn btn-cancel" bindtap="closeCustom">取消</view>
+        <view class="btn btn-ok" bindtap="saveCustom">确认添加</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mask" wx:if="{{datePicker.show}}" bindtap="closeDatePicker" catchtouchmove="noop">
+    <view class="sheet" catchtap="noop">
+      <view class="sheet-title">选择日期</view>
+      <scroll-view scroll-y class="sheet-body custom-sheet-body">
+        <view class="cal-head">
+          <view class="cal-nav" bindtap="dateShift" data-dir="-1">‹</view>
+          <view class="cal-title">{{datePicker.calTitle}}</view>
+          <view class="cal-nav" bindtap="dateShift" data-dir="1">›</view>
+        </view>
+        <view class="cal-week">
+          <text wx:for="{{calWeek}}" wx:key="*this" class="cal-week-cell">{{item}}</text>
+        </view>
+        <view class="cal-grid">
+          <view wx:for="{{datePicker.calCells}}" wx:key="key" class="cal-cell {{item.day ? 'day' : 'blank'}} {{item.state}}" bindtap="pickDate" data-date="{{item.value}}">{{item.day}}</view>
+        </view>
+      </scroll-view>
+      <view class="sheet-actions">
+        <view class="btn btn-cancel" bindtap="closeDatePicker">取消</view>
+        <view class="btn btn-ok" bindtap="applyDatePicker">完成</view>
+      </view>
+    </view>
+  </view>
+</view>

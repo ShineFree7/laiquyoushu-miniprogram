@@ -1,0 +1,212 @@
+.chart-card {
+  padding-bottom: 16rpx;
+}
+
+.metric-strip {
+  padding: 12rpx 8rpx;
+}
+
+.metric-item {
+  padding: 16rpx 0;
+  border-radius: 12rpx;
+  margin: 0 4rpx;
+}
+
+.metric-item.active {
+  background: linear-gradient(135deg, #7A563E 0%, #5D4037 58%, #4A322A 100%);
+  border: 1rpx solid #3E2A1F;
+  box-shadow: 1rpx 3rpx 6rpx rgba(46, 33, 25, 0.35);
+}
+
+.metric-item.active .summary-label {
+  color: #EBD8B8;
+}
+
+.metric-item.active .summary-value {
+  color: #FFF8EC;
+  font-weight: 700;
+}
+
+.card-title {
+  font-family: Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #5D4037;
+  margin-bottom: 16rpx;
+}
+
+.chart-canvas {
+  width: 100%;
+  height: 360rpx;
+  display: block;
+}
+
+.bar-chart-wrap {
+  position: relative;
+}
+
+.bar-touch-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 360rpx;
+  z-index: 5;
+}
+
+.bar-selected {
+  margin-top: 12rpx;
+  padding: 14rpx 18rpx;
+  border-radius: 10rpx;
+  background: rgba(93, 64, 55, 0.08);
+  border: 1rpx solid rgba(93, 64, 55, 0.14);
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #4E342E;
+}
+
+.bar-average {
+  display: flex;
+  margin-top: 12rpx;
+}
+
+.bar-average-item {
+  flex: 1;
+  text-align: center;
+  font-size: 22rpx;
+  color: #6B5B49;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 8rpx;
+  padding: 10rpx 0;
+  margin: 0 6rpx;
+}
+
+.chart-source {
+  position: absolute;
+  left: -2000px;
+  top: 0;
+  width: 750rpx;
+  height: 360rpx;
+}
+
+.bar-source {
+  width: 646rpx;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  padding: 14rpx 0;
+  border-bottom: 1rpx dashed #D9C59E;
+}
+
+.legend-row:last-child {
+  border-bottom: none;
+}
+
+.legend-icon {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.legend-icon-img {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.legend-name {
+  width: 120rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #4E342E;
+}
+
+.legend-bar {
+  flex: 1;
+  height: 14rpx;
+  background: #EADDC4;
+  border: 1rpx solid #D9C59E;
+  border-radius: 7rpx;
+  margin: 0 16rpx;
+  overflow: hidden;
+  box-shadow: inset 0 1rpx 3rpx rgba(93, 64, 55, 0.12);
+}
+
+.legend-fill {
+  height: 100%;
+  border-radius: 7rpx;
+}
+
+.legend-right {
+  width: 180rpx;
+  text-align: right;
+  font-size: 24rpx;
+  color: #6B5B49;
+}
+
+.legend-tags {
+  display: flex;
+  margin-bottom: 12rpx;
+}
+
+.tag {
+  font-size: 24rpx;
+  font-weight: 600;
+  margin-right: 20rpx;
+}
+
+.theme-2 .metric-item.active {
+  background: linear-gradient(135deg, #4169E1 0%, #3155C7 58%, #274A9E 100%);
+  border: 1rpx solid #24459A;
+  box-shadow: 0 4rpx 10rpx rgba(65, 105, 225, 0.32);
+}
+
+.theme-2 .metric-item.active .summary-label {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.theme-2 .metric-item.active .summary-value {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.theme-2 .card-title {
+  color: #1F2D3D;
+}
+
+.theme-2 .legend-icon {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.theme-2 .legend-name {
+  color: #263238;
+}
+
+.theme-2 .legend-bar {
+  background: #EEF2FB;
+  border-color: #E4E8F2;
+  box-shadow: inset 0 1rpx 3rpx rgba(31, 45, 61, 0.05);
+}
+
+.theme-2 .legend-right {
+  color: #9E9E9E;
+}
+
+.theme-2 .bar-selected {
+  background: rgba(65, 105, 225, 0.07);
+  border-color: rgba(65, 105, 225, 0.18);
+  color: #1F2D3D;
+}
+
+.theme-2 .bar-average-item {
+  background: #F7F9FF;
+  color: #5B6B82;
+}

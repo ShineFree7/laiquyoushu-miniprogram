@@ -1,0 +1,165 @@
+.tab-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  background: linear-gradient(135deg, #7A563E 0%, #5D4037 55%, #4A322A 100%);
+  border-top: 1rpx solid #3E2A1F;
+  box-shadow: 0 -4rpx 12rpx rgba(46, 33, 25, 0.3);
+  padding-bottom: env(safe-area-inset-bottom);
+  height: 116rpx;
+  box-sizing: content-box;
+  z-index: 999;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-icon {
+  width: 48rpx;
+  height: 48rpx;
+  position: relative;
+}
+
+.tab-text {
+  font-size: 26rpx;
+  margin-top: 6rpx;
+  color: #D8C4A8;
+}
+
+.tab-item.active .tab-text {
+  color: #FFF8EC;
+  font-weight: 600;
+  text-shadow: 0 1rpx 2rpx rgba(46, 33, 25, 0.5);
+}
+
+.shape-plus,
+.shape-list,
+.shape-bars,
+.shape-person {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.plus-h,
+.plus-v {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #D8C4A8;
+}
+
+.plus-h {
+  width: 34rpx;
+  height: 6rpx;
+  border-radius: 3rpx;
+}
+
+.plus-v {
+  width: 6rpx;
+  height: 34rpx;
+  border-radius: 3rpx;
+}
+
+.line {
+  width: 40rpx;
+  height: 5rpx;
+  background: #D8C4A8;
+  border-radius: 3rpx;
+  margin: 7rpx auto 0;
+}
+
+.bar {
+  position: absolute;
+  bottom: 0;
+  width: 9rpx;
+  background: #D8C4A8;
+  border-radius: 4rpx;
+}
+
+.b1 {
+  left: 7rpx;
+  height: 18rpx;
+}
+
+.b2 {
+  left: 20rpx;
+  height: 34rpx;
+}
+
+.b3 {
+  left: 33rpx;
+  height: 24rpx;
+}
+
+.person-head {
+  position: absolute;
+  left: 50%;
+  top: 2rpx;
+  transform: translateX(-50%);
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background: #D8C4A8;
+}
+
+.person-body {
+  position: absolute;
+  left: 50%;
+  bottom: 2rpx;
+  transform: translateX(-50%);
+  width: 34rpx;
+  height: 22rpx;
+  border-radius: 20rpx 20rpx 0 0;
+  background: #D8C4A8;
+}
+
+.tab-item.active .plus-h,
+.tab-item.active .plus-v,
+.tab-item.active .line,
+.tab-item.active .bar,
+.tab-item.active .person-head,
+.tab-item.active .person-body {
+  background: #FFF8EC;
+}
+
+.theme-2.tab-bar {
+  background: #FFFFFF;
+  border-top: 1rpx solid #E8E8EA;
+  box-shadow: 0 -4rpx 16rpx rgba(31, 45, 61, 0.06);
+}
+
+.theme-2 .tab-text {
+  color: #9AA5B8;
+}
+
+.theme-2 .tab-item.active .tab-text {
+  color: #4169E1;
+  text-shadow: none;
+}
+
+.theme-2 .plus-h,
+.theme-2 .plus-v,
+.theme-2 .line,
+.theme-2 .bar,
+.theme-2 .person-head,
+.theme-2 .person-body {
+  background: #9AA5B8;
+}
+
+.theme-2 .tab-item.active .plus-h,
+.theme-2 .tab-item.active .plus-v,
+.theme-2 .tab-item.active .line,
+.theme-2 .tab-item.active .bar,
+.theme-2 .tab-item.active .person-head,
+.theme-2 .tab-item.active .person-body {
+  background: #4169E1;
+}

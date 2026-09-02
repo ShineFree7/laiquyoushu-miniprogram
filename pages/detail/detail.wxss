@@ -1,0 +1,260 @@
+.group {
+  margin-bottom: 24rpx;
+}
+
+.group-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0 8rpx 12rpx;
+}
+
+.group-date {
+  font-family: Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #5D4037;
+}
+
+.group-expense {
+  font-size: 22rpx;
+  color: #8D7B63;
+}
+
+.group-card {
+  padding: 8rpx 24rpx;
+  margin-bottom: 0;
+}
+
+.record {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx dashed #D9C59E;
+}
+
+.record:last-child {
+  border-bottom: none;
+}
+
+.record-icon {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.record-icon-img {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.record-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.record-category {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #4E342E;
+}
+
+.record-note {
+  font-size: 24rpx;
+  color: #8D7B63;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.record-amount {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-left: 16rpx;
+  font-family: 'DIN Alternate', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+.record-amount.expense {
+  color: #4E342E;
+}
+
+.record-amount.income {
+  color: #2E7D32;
+}
+
+.edit-field {
+  display: flex;
+  align-items: center;
+  padding: 26rpx 0;
+  border-bottom: 1rpx dashed #D9C59E;
+}
+
+.edit-label {
+  width: 120rpx;
+  color: #6D5B47;
+  flex-shrink: 0;
+}
+
+.edit-input {
+  flex: 1;
+  font-size: 30rpx;
+  color: #4E342E;
+  background: #F1E5CD;
+  border: 1rpx solid #DCC49E;
+  border-radius: 10rpx;
+  padding: 14rpx 18rpx;
+  box-shadow: inset 1rpx 2rpx 4rpx rgba(93, 64, 55, 0.12);
+}
+
+.edit-field .picker-value {
+  flex: 1;
+  font-size: 30rpx;
+  color: #4E342E;
+  font-weight: 600;
+}
+
+.edit-cat-grid {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -6rpx;
+}
+
+.edit-cat-tile {
+  width: 25%;
+  box-sizing: border-box;
+  padding: 6rpx;
+}
+
+.edit-cat-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14rpx 0 12rpx;
+  border-radius: 14rpx;
+  background: linear-gradient(165deg, #FFF9EC 0%, #EFE2C6 100%);
+  border: 1rpx solid #E0CBA4;
+  box-shadow:
+    1rpx 2rpx 4rpx rgba(93, 64, 55, 0.12),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.8);
+  min-height: 128rpx;
+  box-sizing: border-box;
+}
+
+.edit-cat-tile.active .edit-cat-inner {
+  background: linear-gradient(135deg, #7A563E 0%, #5D4037 60%, #4A322A 100%);
+  border-color: #3E2A1F;
+  box-shadow: 1rpx 3rpx 6rpx rgba(46, 33, 25, 0.35);
+}
+
+.edit-cat-icon {
+  font-size: 44rpx;
+  line-height: 1.2;
+}
+
+.edit-cat-icon.img {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.edit-cat-name {
+  font-size: 20rpx;
+  color: #6B5B49;
+  margin-top: 8rpx;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.edit-cat-tile.active .edit-cat-name {
+  color: #FFF6E6;
+  font-weight: 600;
+}
+
+.theme-2 .group-date {
+  color: #424242;
+}
+
+.theme-2 .group-expense {
+  color: #9E9E9E;
+}
+
+.theme-2 .record-icon {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.theme-2 .record-icon-img {
+  border-radius: 14rpx;
+}
+
+.theme-2 .record-category {
+  color: #263238;
+}
+
+.theme-2 .record-note {
+  color: #9E9E9E;
+}
+
+.theme-2 .record-amount {
+  color: #263238;
+}
+
+.theme-2 .record-amount.income {
+  color: #2E7D32;
+}
+
+.theme-2 .record-amount.expense {
+  color: #424242;
+}
+
+.theme-2 .edit-field {
+  border-bottom-color: #E8E8E8;
+}
+
+.theme-2 .edit-label {
+  color: #616161;
+}
+
+.theme-2 .edit-input {
+  background: #FFFFFF;
+  border-color: #DADADA;
+  color: #263238;
+  box-shadow: inset 1rpx 2rpx 4rpx rgba(0, 0, 0, 0.06);
+}
+
+.theme-2 .edit-field .picker-value {
+  color: #263238;
+}
+
+.theme-2 .edit-cat-inner {
+  background: linear-gradient(165deg, #FFFFFF 0%, #F7F7F7 100%);
+  border-color: #E0E0E0;
+  box-shadow:
+    1rpx 2rpx 4rpx rgba(0, 0, 0, 0.08),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.9);
+}
+
+.theme-2 .edit-cat-tile.active .edit-cat-inner {
+  background: linear-gradient(135deg, #4169E1 0%, #3155C7 60%, #274A9E 100%);
+  border-color: #24459A;
+  box-shadow: 0 4rpx 10rpx rgba(65, 105, 225, 0.32);
+}
+
+.theme-2 .edit-cat-name {
+  color: #616161;
+}
+
+.theme-2 .edit-cat-tile.active .edit-cat-name {
+  color: #FFFFFF;
+}

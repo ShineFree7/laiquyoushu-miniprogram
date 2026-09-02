@@ -1,0 +1,10 @@
+# 微信开发者工具个人配置，不要上传
+project.private.config.json
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 依赖/日志（本小程序暂无 node_modules，留着以后用）
+node_modules/
+*.log

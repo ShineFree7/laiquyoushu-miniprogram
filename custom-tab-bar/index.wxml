@@ -1,0 +1,25 @@
+<view class="tab-bar {{themeClass}}" wx:if="{{show}}">
+  <view wx:for="{{list}}" wx:key="pagePath" class="tab-item {{selected === index ? 'active' : ''}}" data-index="{{index}}" bindtap="switchTab">
+    <view class="tab-icon">
+      <view wx:if="{{index === 0}}" class="shape-plus">
+        <view class="plus-h"></view>
+        <view class="plus-v"></view>
+      </view>
+      <view wx:elif="{{index === 1}}" class="shape-list">
+        <view class="line"></view>
+        <view class="line"></view>
+        <view class="line"></view>
+      </view>
+      <view wx:elif="{{index === 2}}" class="shape-bars">
+        <view class="bar b1"></view>
+        <view class="bar b2"></view>
+        <view class="bar b3"></view>
+      </view>
+      <view wx:else class="shape-person">
+        <view class="person-head"></view>
+        <view class="person-body"></view>
+      </view>
+    </view>
+    <text class="tab-text">{{item.text}}</text>
+  </view>
+</view>

@@ -1,0 +1,236 @@
+page {
+  background: #F5E9D6;
+  color: #424242;
+}
+
+.profile {
+  background: linear-gradient(135deg, #7A563E 0%, #5D4037 55%, #483128 100%);
+  border: 1rpx solid #3E2A1F;
+  border-radius: 16rpx;
+  color: #FFF4E2;
+  padding: 48rpx 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow:
+    0 6rpx 14rpx rgba(46, 33, 25, 0.3),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.12);
+}
+
+.app-name {
+  font-size: 46rpx;
+  font-weight: 700;
+  font-family: Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  text-shadow: 0 1rpx 2rpx rgba(46, 33, 25, 0.4);
+}
+
+.app-desc {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #E4CDAB;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26rpx 0;
+  border-bottom: 1rpx dashed #D9C59E;
+  font-size: 30rpx;
+  color: #4E342E;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.muted {
+  color: #8D7B63;
+  font-size: 26rpx;
+}
+
+.card {
+  background: linear-gradient(165deg, #FDF7EB 0%, #F3E3C8 100%);
+  border: 1rpx solid #E2CFA9;
+  box-shadow:
+    -2rpx -2rpx 6rpx rgba(255, 255, 255, 0.55),
+    3rpx 4rpx 10rpx rgba(93, 64, 55, 0.12);
+}
+
+.tips {
+  color: #8D7B63;
+}
+
+.feedback-page {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #F5E9D6;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  padding: 48rpx 32rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.feedback-page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36rpx;
+}
+
+.feedback-page-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #4E342E;
+}
+
+.feedback-page-close {
+  width: 56rpx;
+  height: 56rpx;
+  background: transparent;
+  border: none;
+  color: #5F5242;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  font-weight: 400;
+}
+
+.feedback-page-body {
+  flex: 1;
+}
+
+.feedback-field {
+  margin-bottom: 28rpx;
+}
+
+.feedback-label {
+  display: block;
+  font-size: 26rpx;
+  color: #4E342E;
+  margin-bottom: 12rpx;
+}
+
+.feedback-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 240rpx;
+  background: #EADDC4;
+  border: 1rpx solid #D5C09B;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: #4E342E;
+}
+
+.feedback-contact {
+  width: 100%;
+  box-sizing: border-box;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #EADDC4;
+  border: 1rpx solid #D5C09B;
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #4E342E;
+}
+
+.feedback-placeholder {
+  color: #6D5B47;
+}
+
+.feedback-page-actions {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.feedback-page-actions .btn + .btn {
+  margin-left: 20rpx;
+}
+
+.feedback-hint {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #8D7B63;
+  text-align: center;
+}
+
+.theme-2 .profile {
+  background: linear-gradient(135deg, #4169E1 0%, #3155C7 55%, #274A9E 100%);
+  border-color: #24459A;
+  color: #FFFFFF;
+  box-shadow:
+    0 8rpx 20rpx rgba(65, 105, 225, 0.32),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.18);
+  border-radius: 20rpx;
+}
+
+.theme-2 .app-name {
+  color: #FFFFFF;
+  text-shadow: 0 1rpx 2rpx rgba(24, 34, 62, 0.25);
+}
+
+.theme-2 .app-desc {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.theme-2 .row {
+  color: #1F2D3D;
+  border-bottom-color: #EEF0F5;
+}
+
+.theme-2 .muted {
+  color: #9E9E9E;
+}
+
+.theme-2 .card {
+  background: #FFFFFF;
+  border-color: #E8E8EA;
+  box-shadow:
+    0 6rpx 18rpx rgba(31, 45, 61, 0.06);
+  border-radius: 20rpx;
+}
+
+.theme-2 .tips {
+  color: #8A94A6;
+}
+
+.theme-2 .feedback-page {
+  background: #FFFFFF;
+}
+
+.theme-2 .feedback-page-title {
+  color: #1F2D3D;
+}
+
+.theme-2 .feedback-page-close {
+  background: transparent;
+  border: none;
+  color: #5D6B82;
+}
+
+.theme-2 .feedback-label {
+  color: #263447;
+}
+
+.theme-2 .feedback-input,
+.theme-2 .feedback-contact {
+  background: #F5F7FC;
+  border-color: #D8DEE9;
+  color: #1F2D3D;
+  box-shadow: inset 1rpx 2rpx 4rpx rgba(31, 45, 61, 0.04);
+}
+
+.theme-2 .feedback-placeholder {
+  color: #7B89A3;
+}
+
+.theme-2 .feedback-hint {
+  color: #7B89A3;
+}

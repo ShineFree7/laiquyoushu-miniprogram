@@ -1,0 +1,62 @@
+<view class="page {{themeClass}}">
+  <view class="profile">
+    <view class="app-name">来去有数</view>
+    <view class="app-desc">记清每一笔收支，让钱来有处、去有数</view>
+  </view>
+
+  <view class="card">
+    <view class="row" bindtap="onThemeTap">
+      <text>主题</text>
+      <text class="muted">{{themeLabel}} ›</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row" bindtap="onExport">
+      <text>导出数据</text>
+      <text class="muted">JSON / CSV</text>
+    </view>
+    <view class="row" bindtap="onImport">
+      <text>导入数据</text>
+      <text class="muted">JSON / CSV</text>
+    </view>
+    <view class="row" bindtap="openFeedback">
+      <text>意见反馈</text>
+      <text class="muted">留言给我</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <text>版本</text>
+      <text class="muted">v1.0.1</text>
+    </view>
+    <view class="row" bindtap="onClear">
+      <text>清空数据</text>
+    </view>
+  </view>
+
+  <view class="tips">数据仅存本机，建议定期导出备份</view>
+
+  <view class="feedback-page" wx:if="{{feedback.show}}">
+    <view class="feedback-page-head">
+      <text class="feedback-page-title">意见反馈</text>
+      <view class="feedback-page-close" bindtap="closeFeedback">×</view>
+    </view>
+    <view class="feedback-page-body">
+      <view class="feedback-field">
+        <text class="feedback-label">留言内容</text>
+        <textarea class="feedback-input" placeholder="写下你的建议或遇到的问题" placeholder-class="feedback-placeholder" value="{{feedback.text}}" bindinput="onFeedbackText" maxlength="500" />
+      </view>
+      <view class="feedback-field">
+        <text class="feedback-label">联系方式（选填）</text>
+        <input class="feedback-contact" placeholder="微信号或邮箱" placeholder-class="feedback-placeholder" value="{{feedback.contact}}" bindinput="onFeedbackContact" maxlength="60" />
+      </view>
+    </view>
+    <view class="feedback-page-actions">
+      <view class="btn btn-ok" bindtap="copyEmail">复制作者邮箱</view>
+      <view class="btn btn-ok" bindtap="copyFeedback">复制反馈内容</view>
+    </view>
+    <view class="feedback-hint">复制反馈内容作为正文，粘贴到复制的作者邮箱里发送即可。</view>
+  </view>
+</view>

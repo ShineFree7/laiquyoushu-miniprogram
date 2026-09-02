@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/stats/stats",
+    "pages/mine/mine"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F5E9D6",
+    "navigationBarTitleText": "来去有数",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5E9D6"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8D7B63",
+    "selectedColor": "#5D4037",
+    "backgroundColor": "#F5E9D6",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "记一笔"
+      },
+      {
+        "pagePath": "pages/detail/detail",
+        "text": "明细"
+      },
+      {
+        "pagePath": "pages/stats/stats",
+        "text": "统计"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
